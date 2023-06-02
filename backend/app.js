@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-const { DB_ADRESS } = process.env;
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -46,7 +45,7 @@ app.use((err, req, res, next) => {
   next();
 });
 
-mongoose.connect(DB_ADRESS, {
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 });
 
 app.listen(PORT, () => {
