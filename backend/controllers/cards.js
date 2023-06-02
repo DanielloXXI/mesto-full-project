@@ -20,7 +20,7 @@ const deleteCard = (req, res, next) => {
       }
       return card.deleteOne()
         .then((cardData) => {
-          res.send({ data: cardData });
+          res.send(cardData);
         });
     })
     .catch(next);

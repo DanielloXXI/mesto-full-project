@@ -3,7 +3,8 @@ class ApiAuth {
         this._url = options.baseUrl;
     }
 
-    tokenValidity(token) {
+    tokenValidity() {
+        const token = localStorage.getItem('jwt');
         return fetch(`${this._url}/users/me`, {
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +54,7 @@ const handleResponse = (res) => {
 }
 
 const apiAuth = new ApiAuth({
-    baseUrl: 'https://auth.nomoreparties.co',
+    baseUrl: 'http://localhost:3000',
 });
 
 export default apiAuth;

@@ -96,7 +96,7 @@ const updateUser = (request, response, next) => {
     )
     .orFail()
     .then((user) => response.status(200)
-      .send({ data: user }))
+      .send(user))
     .catch((err) => {
       if (err.name === 'DocumentNotFoundError') {
         next(new NotFoundError('пользователь с таким id - отсутствует'));

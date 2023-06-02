@@ -1,5 +1,4 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "./Header"
 import Main from "./Main";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
@@ -10,7 +9,7 @@ import { CardContext } from "../contexts/CardContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
-import { Route, Switch, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import ProtectedRoute from "./ProtectedRoute";
@@ -41,13 +40,13 @@ function App() {
   React.useEffect(() => {
     Promise.all([api.getInfoAboutUser(), api.getInitialCards()])
       .then((res) => {
-        setCurrentUser(res[0]);
+        setCurrentUser(res[0].data);
         setCards(res[1]);
       })
       .catch((err) => {
         console.log(`Ошибка ${err}`);
-      })
-  }, []);
+      });
+  }, [isLoggedIn]);
 
   function handleUpdateUser(props) {
     setIsLoading(true);
@@ -163,7 +162,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(id => id === currentUser._id);
     if (isLiked) {
       api.deleteLike(card._id)
         .then((newCard) => {
@@ -235,7 +234,7 @@ function App() {
       const jwt = localStorage.getItem('jwt');
       if (jwt) {
         // проверим токен
-        apiAuth.tokenValidity(jwt)
+        apiAuth.tokenValidity()
           .then((res) => {
             if (res) {
               // авторизуем пользователя
