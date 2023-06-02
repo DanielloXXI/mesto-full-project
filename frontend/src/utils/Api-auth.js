@@ -54,7 +54,8 @@ const handleResponse = (res) => {
 }
 
 const apiAuth = new ApiAuth({
-    baseUrl: 'http://localhost:3000',
+    // baseUrl: 'http://localhost:3000',
+    baseUrl: 'https://api.nomoredomains.rocks/',
 });
 
 export default apiAuth;
