@@ -8,12 +8,19 @@ const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const cors = require('cors');
+
 const rateLimit = require('express-rate-limit');
 const router = require('./routes/router');
 
+const corsOptions = {
+  origin: '*',
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+
 const { PORT = 3000 } = process.env;
 const app = express();
-app.use(cors());
+app.use(cors(corsOptions));
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
