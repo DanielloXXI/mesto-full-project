@@ -9,6 +9,7 @@ const { errors } = require('celebrate');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const router = require('./routes/router');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -23,6 +24,7 @@ app.use(limiter);
 app.use(helmet());
 app.use(cookieParser()); // подключаем парсер кук как мидлвэр
 app.use(bodyParser.json());
+app.use(requestLogger);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
@@ -44,7 +46,7 @@ app.use((err, req, res, next) => {
     });
   next();
 });
-
+app.use(errorLogger);
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 });
 
