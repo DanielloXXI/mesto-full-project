@@ -2,7 +2,7 @@ SERVERS DO NOT WORK
 
 <h1 align="center">Project "Mesto" with authorization and registration!</h1>
 
-<img src="./src/images/ReadMe/main.png" width="100%">
+<img src="./frontend/src/images/ReadMe/main.png" width="100%">
 
 <h2 align="center"><a  href="https://danielloxxi.github.io/react-mesto-auth/#/sign-in">Test site</a></h2>
 
