@@ -5,7 +5,7 @@
 ## Test
 
 - **Copy repo** 
-- **Try command "npm run start" for frontend and "npm run dev" for backend** 
+- **Try command "npm install", "npm run start" for frontend and "npm install", "npm run dev" for backend** 
 - **Wait... and... Congratulations!**
 
 ## Description
