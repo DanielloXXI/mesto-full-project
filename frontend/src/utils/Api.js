@@ -120,7 +120,7 @@ const handleResponse = (res) => {
 }
 
 const api = new Api({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:3001',
 });
 
 export default api;

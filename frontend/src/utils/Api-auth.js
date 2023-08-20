@@ -54,7 +54,7 @@ const handleResponse = (res) => {
 }
 
 const apiAuth = new ApiAuth({
-    baseUrl: 'http://localhost:3000',
+    baseUrl: 'http://localhost:3001',
 });
 
 export default apiAuth;
